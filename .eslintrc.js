@@ -23,7 +23,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'better-styled-components'],
   rules: {
     'react/jsx-filename-extension': [1, {extensions: ['.tsx', '.ts']}],
     'import/extensions': [
@@ -36,6 +36,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'import/prefer-default-export': 0,
   },
   settings: {
     react: {
