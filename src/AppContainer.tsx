@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {AppComponent} from './components/AppComponent';
+import { AppComponent } from './components/AppComponent';
 
 const StyledAppContainer = styled.div`
   display: flex;
