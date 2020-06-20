@@ -25,7 +25,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier', 'better-styled-components'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'better-styled-components', 'react-hooks'],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
     'import/extensions': [
@@ -42,6 +42,8 @@ module.exports = {
     'prettier/prettier': 'error',
     'react/prop-types': 0,
     'react/destructuring-assignment': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   settings: {
     react: {
