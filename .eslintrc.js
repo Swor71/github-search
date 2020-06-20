@@ -41,6 +41,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'prettier/prettier': 'error',
     'react/prop-types': 0,
+    'react/destructuring-assignment': 0,
   },
   settings: {
     react: {
