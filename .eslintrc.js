@@ -27,7 +27,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'better-styled-components'],
   rules: {
-    'react/jsx-filename-extension': [1, {extensions: ['.tsx', '.ts']}],
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -39,8 +39,7 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 0,
-    'prettier/prettier': 0,
-    'object-curly-spacing': ['error', 'always'],
+    'prettier/prettier': 'error',
   },
   settings: {
     react: {
