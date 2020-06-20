@@ -1,16 +1,18 @@
 /* eslint-disable global-require */
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
 import searchIcon from '../../../assets/icons/search-icon.png';
 
 const StyledInputWrapper = styled.div`
   position: relative;
-`;
 
-const StyledSearchIcon = styled.img`
-  position: absolute;
-  left: 8px;
-  top: 10px;
+  &::before {
+    content: url(${searchIcon});
+    position: absolute;
+    left: 8px;
+    top: 10px;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -26,7 +28,7 @@ const StyledInput = styled.input`
   }
 `;
 
-export const Input: React.FC = () => {
+export const SearchInput: React.FC = () => {
   const [userName, setUserName] = useState<string>('');
 
   const handleInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +37,6 @@ export const Input: React.FC = () => {
 
   return (
     <StyledInputWrapper>
-      <StyledSearchIcon src={searchIcon} alt='search-icon' />
       <StyledInput onChange={handleInputChange} placeholder='Search for users' />
     </StyledInputWrapper>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input } from './Input/Input';
+import { SearchInput } from './SearchInput/SearchInput';
 import { SearchButton } from './SearchButton/SearchButton';
 
 const StyledHeader = styled.header`
@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
 export const HeaderComponent: React.FC = () => {
   return (
     <StyledHeader>
-      <Input />
+      <SearchInput />
       <SearchButton />
     </StyledHeader>
   );
