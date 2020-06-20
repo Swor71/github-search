@@ -1,5 +1,17 @@
+/* eslint-disable global-require */
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import searchIcon from '../../../assets/icons/search-icon.png';
+
+const StyledInputWrapper = styled.div`
+  position: relative;
+`;
+
+const StyledSearchIcon = styled.img`
+  position: absolute;
+  left: 8px;
+  top: 10px;
+`;
 
 const StyledInput = styled.input`
   width: 246px;
@@ -8,6 +20,10 @@ const StyledInput = styled.input`
   background: #e5e5e5;
   border: none;
   padding-left: 32px;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Input: React.FC = () => {
@@ -17,5 +33,10 @@ export const Input: React.FC = () => {
     setUserName(target.value);
   };
 
-  return <StyledInput onChange={handleInputChange} placeholder='Search for users' />;
+  return (
+    <StyledInputWrapper>
+      <StyledSearchIcon src={searchIcon} alt='search-icon' />
+      <StyledInput onChange={handleInputChange} placeholder='Search for users' />
+    </StyledInputWrapper>
+  );
 };
