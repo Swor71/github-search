@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { SearchInput } from './SearchInput/SearchInput';
 import { SearchButton } from './SearchButton/SearchButton';
@@ -13,9 +13,15 @@ const StyledHeader = styled.header`
 `;
 
 export const HeaderComponent: React.FC = () => {
+  const [userName, setUserName] = useState<string>('');
+
+  const handleInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(target.value);
+  };
+
   return (
     <StyledHeader>
-      <SearchInput />
+      <SearchInput onHandleInputChange={handleInputChange} />
       <SearchButton />
     </StyledHeader>
   );

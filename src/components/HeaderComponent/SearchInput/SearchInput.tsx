@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import searchIcon from '../../../assets/icons/search-icon.png';
@@ -28,16 +28,16 @@ const StyledInput = styled.input`
   }
 `;
 
-export const SearchInput: React.FC = () => {
-  const [userName, setUserName] = useState<string>('');
+interface Props {
+  onHandleInputChange(event: React.ChangeEvent<HTMLInputElement>): void;
+}
 
-  const handleInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setUserName(target.value);
-  };
+export const SearchInput: React.FC<Props> = props => {
+  const { onHandleInputChange } = props;
 
   return (
     <StyledInputWrapper>
-      <StyledInput onChange={handleInputChange} placeholder='Search for users' />
+      <StyledInput onChange={onHandleInputChange} placeholder='Search for users' />
     </StyledInputWrapper>
   );
 };
