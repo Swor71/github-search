@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { HeaderComponent } from './HeaderComponent/HeaderComponent';
 
 const StyledAppComponent = styled.div`
   max-width: 375px;
@@ -10,5 +11,9 @@ const StyledAppComponent = styled.div`
 `;
 
 export const AppComponent: React.FC = () => {
-  return <StyledAppComponent />;
+  return (
+    <StyledAppComponent>
+      <HeaderComponent />
+    </StyledAppComponent>
+  );
 };
