@@ -13,7 +13,7 @@ const StyledAppContainer = styled.div`
 
 const AppContainer: React.FC = () => (
   <StyledAppContainer>
-    <AppComponent>tooploox</AppComponent>
+    <AppComponent />
   </StyledAppContainer>
 );
 
