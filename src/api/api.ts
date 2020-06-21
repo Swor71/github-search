@@ -11,7 +11,8 @@ export class GitHubAPI {
           Accept: 'application/vnd.github.v3+json',
         },
       })
-      .then(res => res?.data);
+      .then(res => res?.data)
+      .catch(error => new Error(error));
 
     return userData;
   }
