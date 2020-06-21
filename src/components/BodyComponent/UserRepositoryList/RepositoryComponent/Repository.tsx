@@ -11,10 +11,11 @@ const RepositoryWrapper = styled.div`
   width: 327px;
   height: 48px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 16px;
   margin-bottom: 16px;
+  background: #ffffff;
 `;
 
 const RespositoryLink = styled.a`

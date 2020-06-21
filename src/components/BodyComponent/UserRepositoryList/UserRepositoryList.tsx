@@ -12,14 +12,22 @@ const RepositoryList = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 32px;
+`;
+
+const RepositoryListHeader = styled.header`
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 16px;
+  align-self: flex-start;
 `;
 
 export const UserRepositoryList: React.FC<Props> = props => {
   return (
     <RepositoryList>
+      <RepositoryListHeader>Top repositories</RepositoryListHeader>
       {props.repositories?.map(repository => (
-        <RepositoryComponent repositoryLink={repository.svn_url} key={repository.id} />
+        <RepositoryComponent repositoryLink={repository.name} key={repository.id} />
       ))}
     </RepositoryList>
   );

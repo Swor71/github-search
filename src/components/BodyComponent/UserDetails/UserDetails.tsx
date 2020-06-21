@@ -32,6 +32,7 @@ const AvatarAndNameWrapper = styled.div`
 const StyledUserDescription = styled.span`
   font-size: 14px;
   letter-spacing: 0.4px;
+  line-height: 19px;
   color: #828282;
 `;
 

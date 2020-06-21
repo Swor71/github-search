@@ -14,6 +14,7 @@ const StyledHeader = styled.header`
   height: 84px;
   width: 100%;
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
 `;
 
 interface Props {
