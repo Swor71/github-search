@@ -12,6 +12,14 @@ const StyledSearchButton = styled.button`
   border: none;
 `;
 
-export const SearchButton: React.FC = () => {
-  return <StyledSearchButton type='button'>Search</StyledSearchButton>;
+interface Props {
+  onHandleSearch(): void;
+}
+
+export const SearchButton: React.FC<Props> = props => {
+  return (
+    <StyledSearchButton type='button' onClick={props.onHandleSearch}>
+      Search
+    </StyledSearchButton>
+  );
 };

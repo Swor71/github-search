@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { HeaderComponent } from './HeaderComponent/HeaderComponent';
+import { BodyComponent } from './BodyComponent/BodyComponent';
+import { UserData } from '../types/types';
 
 const StyledAppComponent = styled.div`
   max-width: 375px;
@@ -11,9 +13,16 @@ const StyledAppComponent = styled.div`
 `;
 
 export const AppComponent: React.FC = () => {
+  const [userData, setUserData] = useState<UserData>();
+
+  const handleSetUserData = (data: UserData) => {
+    setUserData(data);
+  };
+
   return (
     <StyledAppComponent>
-      <HeaderComponent />
+      <HeaderComponent onHandleSetUserData={handleSetUserData} />
+      {userData && <BodyComponent userData={userData} />}
     </StyledAppComponent>
   );
 };

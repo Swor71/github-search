@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { SearchInput } from './SearchInput/SearchInput';
 import { SearchButton } from './SearchButton/SearchButton';
+import { GitHubAPI } from '../../api/api';
+import { UserData } from '../../types/types';
+
+const api = new GitHubAPI();
 
 const StyledHeader = styled.header`
   display: flex;
@@ -12,17 +16,27 @@ const StyledHeader = styled.header`
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
 `;
 
-export const HeaderComponent: React.FC = () => {
+interface Props {
+  onHandleSetUserData(data: UserData): void;
+}
+
+export const HeaderComponent: React.FC<Props> = props => {
   const [userName, setUserName] = useState<string>('');
 
   const handleInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(target.value);
   };
 
+  const handleSearch = async () => {
+    const data = await api.fetchUserData(userName);
+
+    props.onHandleSetUserData(data);
+  };
+
   return (
     <StyledHeader>
       <SearchInput onHandleInputChange={handleInputChange} />
-      <SearchButton />
+      <SearchButton onHandleSearch={handleSearch} />
     </StyledHeader>
   );
 };
