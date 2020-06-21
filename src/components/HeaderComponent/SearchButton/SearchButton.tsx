@@ -10,6 +10,7 @@ const StyledSearchButton = styled.button`
   font-size: 12px;
   font-weight: bold;
   border: none;
+  cursor: pointer;
 `;
 
 interface Props {
