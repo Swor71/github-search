@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-export type UserData = {
+export interface UserData {
   avatar_url: string;
   bio: string;
   blog: string;
@@ -32,4 +32,4 @@ export type UserData = {
   type: string;
   updated_at: string;
   url: string;
-};
+}
