@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { SearchInput } from './SearchInput/SearchInput';
 import { SearchButton } from './SearchButton/SearchButton';
-import { GitHubAPI } from '../../api/api';
+import { GitHubApi } from '../../api/githubApi';
 import { UserData, Repository } from '../../types/types';
 
-const api = new GitHubAPI();
+const api = new GitHubApi();
 
 const StyledHeader = styled.header`
   height: 84px;
