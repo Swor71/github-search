@@ -25,6 +25,7 @@ const StyledForm = styled.form`
 interface Props {
   onHandleSetUserData(data: UserData): void;
   onHandleSetUserRepos(repos: Repository[]): void;
+  onHandleError(error: Error | undefined): void;
 }
 
 export const HeaderComponent: React.FC<Props> = props => {
@@ -37,11 +38,15 @@ export const HeaderComponent: React.FC<Props> = props => {
   const handleSearch = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    const data = await api.fetchUserData(userName);
-    const repos = await api.fetchUserRepositories(userName);
+    props.onHandleError(undefined);
 
-    props.onHandleSetUserData(data);
-    props.onHandleSetUserRepos(repos.items);
+    const data = await api.fetchUserData(userName).catch(error => props.onHandleError(error));
+    const repos = await api.fetchUserRepositories(userName).catch(error => props.onHandleError(error));
+
+    if (data && repos) {
+      props.onHandleSetUserData(data);
+      props.onHandleSetUserRepos(repos.items);
+    }
   };
 
   return (

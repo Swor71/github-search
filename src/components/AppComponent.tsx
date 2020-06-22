@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { HeaderComponent } from './HeaderComponent/HeaderComponent';
 import { BodyComponent } from './BodyComponent/BodyComponent';
 import { UserData, Repository } from '../types/types';
+import { ErrorComponent } from './common/ErrorComponent';
 
 const StyledAppComponent = styled.div`
   max-width: 375px;
@@ -15,6 +16,7 @@ const StyledAppComponent = styled.div`
 export const AppComponent: React.FC = () => {
   const [userData, setUserData] = useState<UserData>();
   const [userRepos, setUserRepos] = useState<Repository[]>();
+  const [error, setError] = useState<Error>();
 
   const handleSetUserData = (data: UserData) => {
     setUserData(data);
@@ -26,10 +28,33 @@ export const AppComponent: React.FC = () => {
     setUserRepos(threeTopReposWithMostStars);
   };
 
+  const handleError = (err: Error | undefined) => {
+    if (err === undefined) {
+      setUserData(undefined);
+      setUserRepos(undefined);
+    }
+
+    setError(err);
+  };
+
+  let content = <div>nothing here</div>;
+
+  if (userData && userRepos && !error) {
+    content = <BodyComponent userData={userData} userRepos={userRepos} />;
+  }
+
+  if (error) {
+    content = <ErrorComponent error={error} />;
+  }
+
   return (
     <StyledAppComponent>
-      <HeaderComponent onHandleSetUserData={handleSetUserData} onHandleSetUserRepos={handleSetUserRepos} />
-      {userData && userRepos && <BodyComponent userData={userData} userRepos={userRepos} />}
+      <HeaderComponent
+        onHandleSetUserData={handleSetUserData}
+        onHandleSetUserRepos={handleSetUserRepos}
+        onHandleError={handleError}
+      />
+      {content}
     </StyledAppComponent>
   );
 };
