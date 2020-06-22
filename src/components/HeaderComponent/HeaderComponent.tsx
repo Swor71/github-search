@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { SearchInput } from './SearchInput/SearchInput';
 import { SearchButton } from './SearchButton/SearchButton';
 import { GitHubAPI } from '../../api/api';
-import { UserData } from '../../types/types';
+import { UserData, Repository } from '../../types/types';
 
 const api = new GitHubAPI();
 
@@ -24,6 +24,7 @@ const StyledForm = styled.form`
 
 interface Props {
   onHandleSetUserData(data: UserData): void;
+  onHandleSetUserRepos(repos: Repository[]): void;
 }
 
 export const HeaderComponent: React.FC<Props> = props => {
@@ -37,8 +38,10 @@ export const HeaderComponent: React.FC<Props> = props => {
     event.preventDefault();
 
     const data = await api.fetchUserData(userName);
+    const repos = await api.fetchUserRepositories(userName);
 
     props.onHandleSetUserData(data);
+    props.onHandleSetUserRepos(repos);
   };
 
   return (

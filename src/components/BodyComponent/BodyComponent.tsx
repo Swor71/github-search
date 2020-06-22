@@ -6,6 +6,7 @@ import { UserRepositoryList } from './UserRepositoryList/UserRepositoryList';
 
 interface Props {
   userData: UserData;
+  userRepos: Repository[];
 }
 
 export const mockData: Repository[] = [
@@ -319,7 +320,7 @@ export const BodyComponent: React.FC<Props> = props => {
   return (
     <BodyComponentWrapper>
       <UserDetails userData={props.userData} />
-      <UserRepositoryList repositories={mockData} />
+      <UserRepositoryList repositories={props.userRepos} />
     </BodyComponentWrapper>
   );
 };
