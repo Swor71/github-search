@@ -17,6 +17,11 @@ const RepositoryWrapper = styled.div`
   align-items: center;
   margin-bottom: 16px;
   background: #ffffff;
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
 `;
 
 const RespositoryLink = styled.a`

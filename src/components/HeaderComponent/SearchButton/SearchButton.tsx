@@ -11,6 +11,12 @@ const StyledSearchButton = styled.button`
   font-weight: bold;
   border: none;
   cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
 `;
 
 interface Props {
