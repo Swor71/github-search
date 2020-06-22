@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 interface Props {
   repositoryLink: string;
+  repositoryName: string;
 }
 
 const RepositoryWrapper = styled.div`
@@ -29,7 +30,7 @@ export const RepositoryComponent: React.FC<Props> = props => {
   return (
     <RepositoryWrapper>
       <RespositoryLink href={props.repositoryLink} target='_blank'>
-        {props.repositoryLink}
+        {props.repositoryName}
       </RespositoryLink>
     </RepositoryWrapper>
   );

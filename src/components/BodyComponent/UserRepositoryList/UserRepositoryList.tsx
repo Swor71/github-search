@@ -27,7 +27,11 @@ export const UserRepositoryList: React.FC<Props> = props => {
     <RepositoryList>
       <RepositoryListHeader>Top repositories</RepositoryListHeader>
       {props.repositories?.map(repository => (
-        <RepositoryComponent repositoryLink={repository.name} key={repository.id} />
+        <RepositoryComponent
+          repositoryLink={repository.html_url}
+          repositoryName={repository.name}
+          key={repository.id}
+        />
       ))}
     </RepositoryList>
   );
