@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { UserData, Repository } from '../types/types';
+import { UserData, GitHubSearchResponse } from '../types/types';
 import { RestApi } from './restApi';
 
 export class GitHubApi {
@@ -19,8 +19,10 @@ export class GitHubApi {
     return userData.data;
   }
 
-  public async fetchUserRepositories(userName: string): Promise<Repository[]> {
-    const userRepos: AxiosResponse<Repository[]> = await this.http.get<Repository[]>(`/users/${userName}/repos`);
+  public async fetchUserRepositories(userName: string): Promise<GitHubSearchResponse> {
+    const userRepos: AxiosResponse<GitHubSearchResponse> = await this.http.get<GitHubSearchResponse>(
+      `search/repositories?q=user:${userName}+sort:stars`,
+    );
 
     return userRepos.data;
   }

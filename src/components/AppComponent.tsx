@@ -21,11 +21,9 @@ export const AppComponent: React.FC = () => {
   };
 
   const handleSetUserRepos = (repos: Repository[]) => {
-    const reposWithMostStars = repos
-      .sort((repo1: Repository, repo2: Repository) => repo2.stargazers_count - repo1.stargazers_count)
-      .slice(0, 3);
+    const threeTopReposWithMostStars = repos.slice(0, 3);
 
-    setUserRepos(reposWithMostStars);
+    setUserRepos(threeTopReposWithMostStars);
   };
 
   return (

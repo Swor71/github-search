@@ -134,3 +134,9 @@ export interface Repository {
   watchers_count: number;
   watchers: number;
 }
+
+export interface GitHubSearchResponse {
+  incomplete_results: boolean;
+  items: Repository[];
+  total_count: number;
+}

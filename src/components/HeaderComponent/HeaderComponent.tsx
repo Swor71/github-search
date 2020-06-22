@@ -41,7 +41,7 @@ export const HeaderComponent: React.FC<Props> = props => {
     const repos = await api.fetchUserRepositories(userName);
 
     props.onHandleSetUserData(data);
-    props.onHandleSetUserRepos(repos);
+    props.onHandleSetUserRepos(repos.items);
   };
 
   return (
