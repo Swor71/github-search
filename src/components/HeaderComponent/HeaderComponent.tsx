@@ -38,10 +38,14 @@ export const HeaderComponent: React.FC<Props> = props => {
   const handleSearch = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
+    if (userName.trim() === '') {
+      return;
+    }
+
     props.onHandleError(undefined);
 
-    const data = await api.fetchUserData(userName).catch(error => props.onHandleError(error));
-    const repos = await api.fetchUserRepositories(userName).catch(error => props.onHandleError(error));
+    const data = await api.fetchUserData(userName.trim()).catch(error => props.onHandleError(error));
+    const repos = await api.fetchUserRepositories(userName.trim()).catch(error => props.onHandleError(error));
 
     if (data && repos) {
       props.onHandleSetUserData(data);

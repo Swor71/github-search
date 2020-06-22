@@ -33,11 +33,9 @@ interface Props {
 }
 
 export const SearchInput: React.FC<Props> = props => {
-  const { onHandleInputChange } = props;
-
   return (
     <StyledInputWrapper>
-      <StyledInput onChange={onHandleInputChange} placeholder='Search for users' />
+      <StyledInput onChange={props.onHandleInputChange} placeholder='Search for users' />
     </StyledInputWrapper>
   );
 };
