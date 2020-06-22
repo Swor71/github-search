@@ -14,12 +14,12 @@ const StyledSearchButton = styled.button`
 `;
 
 interface Props {
-  onHandleSearch(): void;
+  onHandleSearch(event: React.MouseEvent<HTMLButtonElement>): void;
 }
 
 export const SearchButton: React.FC<Props> = props => {
   return (
-    <StyledSearchButton type='button' onClick={props.onHandleSearch}>
+    <StyledSearchButton type='submit' onClick={props.onHandleSearch}>
       Search
     </StyledSearchButton>
   );

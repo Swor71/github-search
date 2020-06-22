@@ -8,13 +8,18 @@ import { UserData } from '../../types/types';
 const api = new GitHubAPI();
 
 const StyledHeader = styled.header`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
   height: 84px;
   width: 100%;
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
   background: #ffffff;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 `;
 
 interface Props {
@@ -28,7 +33,9 @@ export const HeaderComponent: React.FC<Props> = props => {
     setUserName(target.value);
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
     const data = await api.fetchUserData(userName);
 
     props.onHandleSetUserData(data);
@@ -36,8 +43,10 @@ export const HeaderComponent: React.FC<Props> = props => {
 
   return (
     <StyledHeader>
-      <SearchInput onHandleInputChange={handleInputChange} />
-      <SearchButton onHandleSearch={handleSearch} />
+      <StyledForm>
+        <SearchInput onHandleInputChange={handleInputChange} />
+        <SearchButton onHandleSearch={handleSearch} />
+      </StyledForm>
     </StyledHeader>
   );
 };
