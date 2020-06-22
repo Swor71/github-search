@@ -4,6 +4,7 @@ import styled from 'styled-components';
 interface Props {
   repositoryLink: string;
   repositoryName: string;
+  repositoryStars: number;
 }
 
 const RepositoryWrapper = styled.div`
@@ -14,7 +15,6 @@ const RepositoryWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 16px;
   margin-bottom: 16px;
   background: #ffffff;
 `;
@@ -24,13 +24,19 @@ const RespositoryLink = styled.a`
   letter-spacing: 0.4px;
   color: #2f80ed;
   text-decoration: none;
+  height: 100%;
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const RepositoryComponent: React.FC<Props> = props => {
   return (
     <RepositoryWrapper>
       <RespositoryLink href={props.repositoryLink} target='_blank'>
-        {props.repositoryName}
+        <div>{props.repositoryName}</div> <div>&#9733;{props.repositoryStars}</div>
       </RespositoryLink>
     </RepositoryWrapper>
   );

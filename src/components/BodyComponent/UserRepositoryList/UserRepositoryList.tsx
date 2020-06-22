@@ -30,6 +30,7 @@ export const UserRepositoryList: React.FC<Props> = props => {
         <RepositoryComponent
           repositoryLink={repository.html_url}
           repositoryName={repository.name}
+          repositoryStars={repository.stargazers_count}
           key={repository.id}
         />
       ))}
