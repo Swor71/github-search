@@ -4,6 +4,7 @@ import { HeaderComponent } from './HeaderComponent/HeaderComponent';
 import { BodyComponent } from './BodyComponent/BodyComponent';
 import { UserData, Repository } from '../types/types';
 import { ErrorComponent } from './common/ErrorComponent';
+import { PlaceholderBodyComponent } from './common/PlaceholderBodyComponent';
 
 const StyledAppComponent = styled.div`
   max-width: 375px;
@@ -37,7 +38,7 @@ export const AppComponent: React.FC = () => {
     setError(err);
   };
 
-  let content = <div>nothing here</div>;
+  let content = <PlaceholderBodyComponent />;
 
   if (userData && userRepos && !error) {
     content = <BodyComponent userData={userData} userRepos={userRepos} />;
