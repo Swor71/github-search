@@ -85,7 +85,7 @@ export interface Repository {
     node_id: string;
     spdx_id: string;
     url: string;
-  };
+  } | null;
   merges_url: string;
   milestones_url: string;
   mirror_url: string | null;
@@ -118,6 +118,7 @@ export interface Repository {
   pulls_url: string;
   pushed_at: string;
   releases_url: string;
+  score: number;
   size: number;
   ssh_url: string;
   stargazers_count: number;
