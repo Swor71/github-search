@@ -142,4 +142,9 @@ export interface GitHubSearchResponse {
   total_count: number;
 }
 
-export type NullableData<T> = { [P in keyof T]: T[P] | null };
+type RecursiveNullableData<T> = {
+  [P in keyof T]: RecursiveNullableData<T[P]> | null;
+};
+
+export type NullableRepositoryData = RecursiveNullableData<Repository[]>;
+export type NullableUserData = RecursiveNullableData<UserData>;
