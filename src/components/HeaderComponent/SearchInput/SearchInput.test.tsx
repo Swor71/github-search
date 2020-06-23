@@ -1,6 +1,8 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { SearchInput } from './SearchInput';
+
+afterEach(cleanup);
 
 describe('SearchInput component', () => {
   it('renders the component', () => {
