@@ -37,17 +37,21 @@ const StyledUserDescription = styled.span`
 `;
 
 export const UserDetails: React.FC<Props> = props => {
-  const breakUserName = () => {
-    const nameArray = props.userData.name.split(' ');
+  const getUserName = () => {
+    const nameArray = props.userData.name?.split(' ');
 
-    return nameArray.map(name => <div key={name}>{name}</div>);
+    if (nameArray) {
+      return nameArray.map(name => <div key={name}>{name}</div>);
+    }
+
+    return props.userData.login;
   };
 
   return (
     <UserDetailsWrapper>
       <AvatarAndNameWrapper>
         <StyledUserAvatar src={props.userData.avatar_url} alt='user' />
-        <StyledUserName>{breakUserName()}</StyledUserName>
+        <StyledUserName>{getUserName()}</StyledUserName>
       </AvatarAndNameWrapper>
       <StyledUserDescription>{props.userData.bio}</StyledUserDescription>
     </UserDetailsWrapper>
