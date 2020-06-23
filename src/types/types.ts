@@ -85,10 +85,10 @@ export interface Repository {
     node_id: string;
     spdx_id: string;
     url: string;
-  } | null;
+  };
   merges_url: string;
   milestones_url: string;
-  mirror_url: string | null;
+  mirror_url: string;
   name: string;
   node_id: string;
   notifications_url: string;
@@ -141,3 +141,5 @@ export interface GitHubSearchResponse {
   items: Repository[];
   total_count: number;
 }
+
+export type NullableData<T> = { [P in keyof T]: T[P] | null };
