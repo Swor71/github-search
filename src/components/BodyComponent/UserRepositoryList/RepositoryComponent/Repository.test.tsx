@@ -17,6 +17,15 @@ describe('UserRepository component', () => {
 
     const link = getByTestId('link');
 
+    expect(link).toBeInTheDocument();
+  });
+
+  it('checks for href attribute', () => {
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    const { getByTestId } = render(<RepositoryComponent {...mockProps} />);
+
+    const link = getByTestId('link');
+
     expect(link).toHaveAttribute('href', 'https://testpropslink');
   });
 
