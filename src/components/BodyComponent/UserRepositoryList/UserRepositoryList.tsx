@@ -1,12 +1,10 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react-lite';
 import { RepositoryComponent } from './RepositoryComponent/Repository';
 import { Repository } from '../../../types/types';
-
-interface Props {
-  repositories?: Repository[];
-}
+import { StoreContext } from '../../../store/store';
 
 const RepositoryList = styled.div`
   display: flex;
@@ -23,11 +21,13 @@ const RepositoryListHeader = styled.header`
   align-self: flex-start;
 `;
 
-export const UserRepositoryList: React.FC<Props> = props => {
+export const UserRepositoryList: React.FC = observer(() => {
+  const store = useContext(StoreContext);
+
   return (
     <RepositoryList>
       <RepositoryListHeader>Top repositories</RepositoryListHeader>
-      {props.repositories?.map(({ html_url, name, stargazers_count, id }: Repository) => (
+      {store.userRepositories?.map(({ html_url, name, stargazers_count, id }: Repository) => (
         <RepositoryComponent
           repositoryLink={html_url || ''}
           repositoryName={name || ''}
@@ -37,4 +37,4 @@ export const UserRepositoryList: React.FC<Props> = props => {
       ))}
     </RepositoryList>
   );
-};
+});
