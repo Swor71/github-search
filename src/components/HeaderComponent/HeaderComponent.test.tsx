@@ -32,7 +32,6 @@ describe('HeaderComponent component', () => {
     fireEvent.change(input, { target: { value: 'swor71' } });
     fireEvent.click(searchButton);
 
-    await wait(() => expect(testProps.onHandleSetUserRepos).toHaveBeenCalledTimes(1));
     await wait(() => expect(testProps.onHandleSetUserData).toHaveBeenCalledTimes(1));
   });
 
