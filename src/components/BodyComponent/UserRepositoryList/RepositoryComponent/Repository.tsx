@@ -46,5 +46,3 @@ export const RepositoryComponent: React.FC<Props> = props => {
     </RepositoryWrapper>
   );
 };
-
-export default RepositoryWrapper;
