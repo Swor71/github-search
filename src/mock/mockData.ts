@@ -1,6 +1,6 @@
 import { NullableUserData, NullableRepositoryData } from '../types/types';
 
-export const mockRepositoryData: NullableRepositoryData = [
+export const mockRepositoryData: NullableRepositoryData[] = [
   {
     archive_url: 'https://api.github.com/repos/Swor71/React-Native-Guess-A-Number/{archive_format}{/ref}',
     archived: false,

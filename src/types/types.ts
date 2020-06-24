@@ -146,5 +146,5 @@ type RecursiveNullableData<T> = {
   [P in keyof T]: RecursiveNullableData<T[P]> | null;
 };
 
-export type NullableRepositoryData = RecursiveNullableData<Repository[]>;
+export type NullableRepositoryData = RecursiveNullableData<Repository>;
 export type NullableUserData = RecursiveNullableData<UserData>;
