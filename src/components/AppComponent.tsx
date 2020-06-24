@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react-lite';
 import { HeaderComponent } from './HeaderComponent/HeaderComponent';
 import { BodyComponent } from './BodyComponent/BodyComponent';
 import { Repository, User } from '../types/types';
 import { ErrorComponent } from './common/ErrorComponent';
 import { PlaceholderBodyComponent } from './common/PlaceholderBodyComponent';
+import { StoreContext } from '../store/store';
 
 const StyledAppComponent = styled.div`
   max-width: 375px;
@@ -14,38 +16,36 @@ const StyledAppComponent = styled.div`
   background: #fbfcfd;
 `;
 
-export const AppComponent: React.FC = () => {
-  const [userData, setUserData] = useState<User>();
-  const [userRepos, setUserRepos] = useState<Repository[]>();
-  const [error, setError] = useState<Error>();
+export const AppComponent: React.FC = observer(() => {
+  const store = useContext(StoreContext);
 
   const handleSetUserData = (data: User) => {
-    setUserData(data);
+    store.userData = data;
   };
 
   const handleSetUserRepos = (repos: Repository[]) => {
     const threeTopReposWithMostStars = repos?.slice(0, 3);
 
-    setUserRepos(threeTopReposWithMostStars);
+    store.userRepositories = threeTopReposWithMostStars;
   };
 
   const handleError = (err: Error | undefined) => {
     if (err === undefined) {
-      setUserData(undefined);
-      setUserRepos(undefined);
+      store.userData = undefined;
+      store.userRepositories = undefined;
     }
 
-    setError(err);
+    store.error = err;
   };
 
   let content = <PlaceholderBodyComponent />;
 
-  if (userData && userRepos && !error) {
-    content = <BodyComponent userData={userData} userRepos={userRepos} />;
+  if (store.userData && store.userRepositories && !store.error) {
+    content = <BodyComponent userData={store.userData} userRepos={store.userRepositories} />;
   }
 
-  if (error) {
-    content = <ErrorComponent error={error} />;
+  if (store.error) {
+    content = <ErrorComponent error={store.error} />;
   }
 
   return (
@@ -58,4 +58,4 @@ export const AppComponent: React.FC = () => {
       {content}
     </StyledAppComponent>
   );
-};
+});
