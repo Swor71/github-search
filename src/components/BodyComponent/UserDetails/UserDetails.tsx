@@ -1,9 +1,10 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import styled from 'styled-components';
-import { UserData } from '../../../types/types';
+import { User } from '../../../types/types';
 
 interface Props {
-  userData: UserData;
+  userData: User;
 }
 
 const UserDetailsWrapper = styled.div`
@@ -37,23 +38,27 @@ const StyledUserDescription = styled.span`
 `;
 
 export const UserDetails: React.FC<Props> = props => {
+  const {
+    userData: { name, avatar_url, bio, login },
+  } = props;
+
   const getUserName = () => {
-    const nameArray = props.userData.name?.split(' ');
+    const nameArray = name?.split(' ');
 
     if (nameArray) {
-      return nameArray.map(name => <div key={name}>{name}</div>);
+      return nameArray.map(userName => <div key={userName}>{userName}</div>);
     }
 
-    return props.userData.login;
+    return login;
   };
 
   return (
     <UserDetailsWrapper>
       <AvatarAndNameWrapper>
-        <StyledUserAvatar src={props.userData.avatar_url} alt='user' />
+        <StyledUserAvatar src={avatar_url || undefined} alt='user' />
         <StyledUserName>{getUserName()}</StyledUserName>
       </AvatarAndNameWrapper>
-      <StyledUserDescription>{props.userData.bio}</StyledUserDescription>
+      <StyledUserDescription>{bio}</StyledUserDescription>
     </UserDetailsWrapper>
   );
 };

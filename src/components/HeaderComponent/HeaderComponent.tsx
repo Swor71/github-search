@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { SearchInput } from './SearchInput/SearchInput';
 import { SearchButton } from './SearchButton/SearchButton';
 import { GitHubApi } from '../../api/githubApi';
-import { UserData, Repository } from '../../types/types';
+import { User, Repository } from '../../types/types';
 
 const api = new GitHubApi();
 
@@ -23,7 +23,7 @@ const StyledForm = styled.form`
 `;
 
 interface Props {
-  onHandleSetUserData(data: UserData): void;
+  onHandleSetUserData(data: User): void;
   onHandleSetUserRepos(repos: Repository[]): void;
   onHandleError(error: Error | undefined): void;
 }

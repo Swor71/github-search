@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { UserData, GitHubSearchResponse } from '../types/types';
+import { User, GitHubSearchResponse } from '../types/types';
 import { RestApi } from './restApi';
 
 export class GitHubApi {
@@ -13,8 +13,8 @@ export class GitHubApi {
     });
   }
 
-  public async fetchUserData(userName: string): Promise<UserData> {
-    const userData: AxiosResponse<UserData> = await this.http.get<UserData>(`/users/${userName}`);
+  public async fetchUserData(userName: string): Promise<User> {
+    const userData: AxiosResponse<User> = await this.http.get<User>(`/users/${userName}`);
 
     return userData.data;
   }

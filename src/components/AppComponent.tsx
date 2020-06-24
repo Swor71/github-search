@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { HeaderComponent } from './HeaderComponent/HeaderComponent';
 import { BodyComponent } from './BodyComponent/BodyComponent';
-import { UserData, Repository } from '../types/types';
+import { Repository, User } from '../types/types';
 import { ErrorComponent } from './common/ErrorComponent';
 import { PlaceholderBodyComponent } from './common/PlaceholderBodyComponent';
 
@@ -15,16 +15,16 @@ const StyledAppComponent = styled.div`
 `;
 
 export const AppComponent: React.FC = () => {
-  const [userData, setUserData] = useState<UserData>();
+  const [userData, setUserData] = useState<User>();
   const [userRepos, setUserRepos] = useState<Repository[]>();
   const [error, setError] = useState<Error>();
 
-  const handleSetUserData = (data: UserData) => {
+  const handleSetUserData = (data: User) => {
     setUserData(data);
   };
 
   const handleSetUserRepos = (repos: Repository[]) => {
-    const threeTopReposWithMostStars = repos.slice(0, 3);
+    const threeTopReposWithMostStars = repos?.slice(0, 3);
 
     setUserRepos(threeTopReposWithMostStars);
   };

@@ -38,10 +38,12 @@ const RespositoryLink = styled.a`
 `;
 
 export const RepositoryComponent: React.FC<Props> = props => {
+  const { repositoryLink, repositoryName, repositoryStars } = props;
+
   return (
     <RepositoryWrapper>
-      <RespositoryLink href={props.repositoryLink} target='_blank' data-testid='link'>
-        <div>{props.repositoryName}</div> <div>&#9733;{props.repositoryStars}</div>
+      <RespositoryLink href={repositoryLink} target='_blank' data-testid='link'>
+        <div>{repositoryName}</div> <div>&#9733;{repositoryStars}</div>
       </RespositoryLink>
     </RepositoryWrapper>
   );

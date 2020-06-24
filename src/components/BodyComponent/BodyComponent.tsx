@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UserData, Repository } from '../../types/types';
+import { User, Repository } from '../../types/types';
 import { UserDetails } from './UserDetails/UserDetails';
 import { UserRepositoryList } from './UserRepositoryList/UserRepositoryList';
 
 interface Props {
-  userData: UserData;
+  userData: User;
   userRepos: Repository[];
 }
 
@@ -14,10 +14,12 @@ const BodyComponentWrapper = styled.div`
 `;
 
 export const BodyComponent: React.FC<Props> = props => {
+  const { userData, userRepos } = props;
+
   return (
     <BodyComponentWrapper>
-      <UserDetails userData={props.userData} />
-      <UserRepositoryList repositories={props.userRepos} />
+      <UserDetails userData={userData} />
+      <UserRepositoryList repositories={userRepos} />
     </BodyComponentWrapper>
   );
 };

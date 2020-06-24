@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-export interface UserData {
+interface UserData {
   avatar_url: string;
   bio: string;
   blog: string;
@@ -34,7 +34,7 @@ export interface UserData {
   url: string;
 }
 
-export interface Repository {
+interface RepositoryData {
   archive_url: string;
   archived: boolean;
   assignees_url: string;
@@ -146,5 +146,5 @@ type RecursiveNullableData<T> = {
   [P in keyof T]: RecursiveNullableData<T[P]> | null;
 };
 
-export type NullableRepositoryData = RecursiveNullableData<Repository>;
-export type NullableUserData = RecursiveNullableData<UserData>;
+export type Repository = RecursiveNullableData<RepositoryData>;
+export type User = RecursiveNullableData<UserData>;

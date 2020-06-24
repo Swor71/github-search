@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import styled from 'styled-components';
 import { RepositoryComponent } from './RepositoryComponent/Repository';
@@ -26,12 +27,12 @@ export const UserRepositoryList: React.FC<Props> = props => {
   return (
     <RepositoryList>
       <RepositoryListHeader>Top repositories</RepositoryListHeader>
-      {props.repositories?.map(repository => (
+      {props.repositories?.map(({ html_url, name, stargazers_count, id }: Repository) => (
         <RepositoryComponent
-          repositoryLink={repository.html_url}
-          repositoryName={repository.name}
-          repositoryStars={repository.stargazers_count}
-          key={repository.id}
+          repositoryLink={html_url || ''}
+          repositoryName={name || ''}
+          repositoryStars={stargazers_count || 0}
+          key={id || 0}
         />
       ))}
     </RepositoryList>

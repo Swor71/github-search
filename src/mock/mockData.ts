@@ -1,6 +1,6 @@
-import { NullableUserData, NullableRepositoryData } from '../types/types';
+import { User, Repository } from '../types/types';
 
-export const mockRepositoryData: NullableRepositoryData[] = [
+export const mockRepositoryData: Repository[] = [
   {
     archive_url: 'https://api.github.com/repos/Swor71/React-Native-Guess-A-Number/{archive_format}{/ref}',
     archived: false,
@@ -291,7 +291,7 @@ export const mockRepositoryData: NullableRepositoryData[] = [
   },
 ];
 
-export const mockUserData: NullableUserData = {
+export const mockUserData: User = {
   avatar_url: 'https://avatars2.githubusercontent.com/u/32240132?v=4',
   bio: null,
   blog: '',
