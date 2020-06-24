@@ -40,7 +40,7 @@ const RespositoryLink = styled.a`
 export const RepositoryComponent: React.FC<Props> = props => {
   return (
     <RepositoryWrapper>
-      <RespositoryLink href={props.repositoryLink} target='_blank'>
+      <RespositoryLink href={props.repositoryLink} target='_blank' data-testid='link'>
         <div>{props.repositoryName}</div> <div>&#9733;{props.repositoryStars}</div>
       </RespositoryLink>
     </RepositoryWrapper>
