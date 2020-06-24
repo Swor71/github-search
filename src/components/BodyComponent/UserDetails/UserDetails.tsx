@@ -12,7 +12,7 @@ const UserDetailsWrapper = styled.div`
   flex-direction: column;
 `;
 
-const StyledUserName = styled.h4`
+const StyledUserName = styled.div`
   font-size: 18px;
   font-weight: 500;
   align-self: flex-end;
@@ -46,7 +46,11 @@ export const UserDetails: React.FC<Props> = props => {
     const nameArray = name?.split(' ');
 
     if (nameArray) {
-      return nameArray.map(userName => <div key={userName}>{userName}</div>);
+      return nameArray.map(userName => (
+        <div key={userName} data-testid='user-name'>
+          {userName}
+        </div>
+      ));
     }
 
     return login;
@@ -54,7 +58,7 @@ export const UserDetails: React.FC<Props> = props => {
 
   return (
     <UserDetailsWrapper>
-      <AvatarAndNameWrapper>
+      <AvatarAndNameWrapper data-testid='avatar-name-wrapper'>
         <StyledUserAvatar src={avatar_url || undefined} alt='user' />
         <StyledUserName>{getUserName()}</StyledUserName>
       </AvatarAndNameWrapper>
