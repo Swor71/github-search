@@ -8,19 +8,21 @@ describe('SearchButton component', () => {
   it('renders the component', () => {
     const fn = jest.fn();
 
-    const { getByText } = render(<SearchButton onHandleSearch={() => fn()} />);
+    const { getByRole } = render(<SearchButton onHandleSearch={() => fn()} />);
 
-    expect(getByText('Search')).toBeInTheDocument();
+    const searchButton = getByRole('button', { name: 'Search' });
+
+    expect(searchButton).toBeInTheDocument();
   });
 
   it('fires onClick event', () => {
     const fn = jest.fn();
 
-    const { getByText } = render(<SearchButton onHandleSearch={() => fn()} />);
+    const { getByRole } = render(<SearchButton onHandleSearch={() => fn()} />);
 
-    const button = getByText('Search');
+    const searchButton = getByRole('button', { name: 'Search' });
 
-    fireEvent.click(button);
+    fireEvent.click(searchButton);
 
     expect(fn).toHaveBeenCalledTimes(1);
   });
