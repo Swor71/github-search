@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react-lite';
+import { StoreContext } from '../../store/store';
 
 const StyledErrorWrapper = styled.div`
   display: flex;
@@ -13,15 +15,13 @@ const StyledErrorMessage = styled.span`
   margin-bottom: 20px;
 `;
 
-interface Props {
-  error: Error;
-}
+export const ErrorComponent: React.FC = observer(() => {
+  const store = useContext(StoreContext);
 
-export const ErrorComponent: React.FC<Props> = props => {
   return (
     <StyledErrorWrapper>
       <StyledErrorMessage>Oops.. something went wrong.. :(</StyledErrorMessage>
-      <StyledErrorMessage>{props.error.message}</StyledErrorMessage>
+      <StyledErrorMessage>{store.error?.message}</StyledErrorMessage>
     </StyledErrorWrapper>
   );
-};
+});

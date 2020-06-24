@@ -45,7 +45,7 @@ export const AppComponent: React.FC = observer(() => {
   }
 
   if (store.error) {
-    content = <ErrorComponent error={store.error} />;
+    content = <ErrorComponent />;
   }
 
   return (
