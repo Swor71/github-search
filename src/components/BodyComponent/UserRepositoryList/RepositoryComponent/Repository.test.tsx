@@ -18,8 +18,22 @@ describe('UserRepository component', () => {
     const link = getByTestId('link');
 
     expect(link).toHaveAttribute('href', 'https://testpropslink');
+  });
+
+  it('checks for repository name', () => {
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    const { getByTestId } = render(<RepositoryComponent {...mockProps} />);
+
+    const link = getByTestId('link');
 
     expect(link.firstChild).toHaveTextContent('test props name');
+  });
+
+  it('checks for number of stars', () => {
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    const { getByTestId } = render(<RepositoryComponent {...mockProps} />);
+
+    const link = getByTestId('link');
 
     expect(link.lastChild).toHaveTextContent('1');
   });
