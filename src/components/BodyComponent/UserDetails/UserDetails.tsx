@@ -1,11 +1,8 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { User } from '../../../types/types';
-
-interface Props {
-  userData: User;
-}
+import { observer } from 'mobx-react-lite';
+import { StoreContext } from '../../../store/store';
 
 const UserDetailsWrapper = styled.div`
   display: flex;
@@ -37,13 +34,11 @@ const StyledUserDescription = styled.span`
   color: #828282;
 `;
 
-export const UserDetails: React.FC<Props> = props => {
-  const {
-    userData: { name, avatar_url, bio, login },
-  } = props;
+export const UserDetails: React.FC = observer(() => {
+  const store = useContext(StoreContext);
 
   const getUserName = () => {
-    const nameArray = name?.split(' ');
+    const nameArray = store.userData?.name?.split(' ');
 
     if (nameArray) {
       return nameArray.map(userName => (
@@ -53,16 +48,16 @@ export const UserDetails: React.FC<Props> = props => {
       ));
     }
 
-    return login;
+    return store.userData?.login;
   };
 
   return (
     <UserDetailsWrapper>
       <AvatarAndNameWrapper data-testid='avatar-name-wrapper'>
-        <StyledUserAvatar src={avatar_url || undefined} alt='user' />
+        <StyledUserAvatar src={store.userData?.avatar_url || undefined} alt='user' />
         <StyledUserName>{getUserName()}</StyledUserName>
       </AvatarAndNameWrapper>
-      <StyledUserDescription>{bio}</StyledUserDescription>
+      <StyledUserDescription>{store.userData?.bio}</StyledUserDescription>
     </UserDetailsWrapper>
   );
-};
+});

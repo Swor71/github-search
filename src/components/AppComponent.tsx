@@ -41,7 +41,7 @@ export const AppComponent: React.FC = observer(() => {
   let content = <PlaceholderBodyComponent />;
 
   if (store.userData && store.userRepositories && !store.error) {
-    content = <BodyComponent userData={store.userData} userRepos={store.userRepositories} />;
+    content = <BodyComponent />;
   }
 
   if (store.error) {
