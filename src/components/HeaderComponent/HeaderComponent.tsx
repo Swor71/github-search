@@ -35,7 +35,7 @@ export const HeaderComponent: React.FC<Props> = props => {
     setUserName(target.value);
   };
 
-  const handleSearch = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSearch = async (event: React.SyntheticEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     if (userName.trim() === '') {
