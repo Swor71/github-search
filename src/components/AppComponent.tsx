@@ -7,6 +7,7 @@ import { Repository, User } from '../types/types';
 import { ErrorComponent } from './common/ErrorComponent';
 import { PlaceholderBodyComponent } from './common/PlaceholderBodyComponent';
 import { StoreContext } from '../store/store';
+import { SpinnerComponent } from './common/SpinnerComponent';
 
 const StyledAppComponent = styled.div`
   max-width: 375px;
@@ -39,6 +40,10 @@ export const AppComponent: React.FC = observer(() => {
   };
 
   let content = <PlaceholderBodyComponent />;
+
+  if (store.loading) {
+    content = <SpinnerComponent />;
+  }
 
   if (store.userData && store.userRepositories && !store.error) {
     content = <BodyComponent />;

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react-lite';
 import { SearchInput } from './SearchInput/SearchInput';
 import { SearchButton } from './SearchButton/SearchButton';
 import { GitHubApi } from '../../api/githubApi';
 import { User, Repository } from '../../types/types';
+import { StoreContext } from '../../store/store';
 
 const api = new GitHubApi();
 
@@ -28,8 +30,10 @@ interface Props {
   onHandleError(error: Error | undefined): void;
 }
 
-export const HeaderComponent: React.FC<Props> = props => {
+export const HeaderComponent: React.FC<Props> = observer(props => {
   const [userName, setUserName] = useState<string>('');
+
+  const store = useContext(StoreContext);
 
   const handleInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(target.value);
@@ -42,12 +46,16 @@ export const HeaderComponent: React.FC<Props> = props => {
       return;
     }
 
+    store.loading = true;
+
     props.onHandleError(undefined);
 
     const data = await api.fetchUserData(userName.trim()).catch(error => props.onHandleError(error));
     const repos = await api.fetchUserRepositories(userName.trim()).catch(error => props.onHandleError(error));
 
     if (data && repos) {
+      store.loading = false;
+
       props.onHandleSetUserData(data);
       props.onHandleSetUserRepos(repos.items);
     }
@@ -61,4 +69,4 @@ export const HeaderComponent: React.FC<Props> = props => {
       </StyledForm>
     </StyledHeader>
   );
-};
+});

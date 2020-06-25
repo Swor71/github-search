@@ -8,6 +8,8 @@ class Store {
   @observable userRepositories?: Repository[];
 
   @observable error?: Error;
+
+  @observable loading = false;
 }
 
 export const StoreContext = createContext(new Store());
