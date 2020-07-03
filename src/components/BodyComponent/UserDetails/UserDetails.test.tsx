@@ -2,12 +2,17 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { UserDetails } from './UserDetails';
 import { mockUserData } from '../../../mock/mockData';
+import { StoreContext } from '../../../store/store';
 
 afterEach(cleanup);
 
 describe('UserDetails component', () => {
   it('renders the component', () => {
-    const { getByTestId } = render(<UserDetails userData={mockUserData} />);
+    const { getByTestId } = render(
+      <StoreContext.Provider value={{ ...StoreContext, userData: mockUserData, loading: false }}>
+        <UserDetails />
+      </StoreContext.Provider>,
+    );
 
     const avatarNameWrapper = getByTestId('avatar-name-wrapper');
 
@@ -15,7 +20,11 @@ describe('UserDetails component', () => {
   });
 
   it('renders user avatar', () => {
-    const { getByTestId } = render(<UserDetails userData={mockUserData} />);
+    const { getByTestId } = render(
+      <StoreContext.Provider value={{ ...StoreContext, userData: mockUserData, loading: false }}>
+        <UserDetails />
+      </StoreContext.Provider>,
+    );
 
     const avatarNameWrapper = getByTestId('avatar-name-wrapper');
 
@@ -25,7 +34,11 @@ describe('UserDetails component', () => {
   });
 
   it('renders user name', () => {
-    const { queryAllByTestId } = render(<UserDetails userData={mockUserData} />);
+    const { queryAllByTestId } = render(
+      <StoreContext.Provider value={{ ...StoreContext, userData: mockUserData, loading: false }}>
+        <UserDetails />
+      </StoreContext.Provider>,
+    );
 
     const userNameList = queryAllByTestId('user-name');
 
@@ -33,7 +46,11 @@ describe('UserDetails component', () => {
   });
 
   it("renders empty user bio when it's null", () => {
-    const { getByTestId } = render(<UserDetails userData={mockUserData} />);
+    const { getByTestId } = render(
+      <StoreContext.Provider value={{ ...StoreContext, userData: mockUserData, loading: false }}>
+        <UserDetails />
+      </StoreContext.Provider>,
+    );
 
     const avatarNameWrapper = getByTestId('avatar-name-wrapper');
 
