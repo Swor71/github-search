@@ -7,7 +7,7 @@ import { GitHubApi } from '../../api/githubApi';
 import { User, Repository } from '../../types/types';
 import { StoreContext } from '../../store/store';
 
-const api = new GitHubApi();
+const api = GitHubApi();
 
 const StyledHeader = styled.header`
   height: 84px;
